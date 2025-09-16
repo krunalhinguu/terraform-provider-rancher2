@@ -28,9 +28,8 @@ func flattenClusterImportedConfig(in *managementClient.ImportedConfig, p []inter
 		return []interface{}{}, nil
 	}
 
-	if len(in.PrivateRegistryURL) > 0 {
-		obj["private_registry_url"] = in.PrivateRegistryURL
-	}
+	// Always set the field so Terraform sees consistent state
+	obj["private_registry_url"] = in.PrivateRegistryURL
 
 	return []interface{}{obj}, nil
 }
